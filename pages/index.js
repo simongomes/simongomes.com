@@ -1,12 +1,16 @@
+// Home Page
 import React from "react";
-import Header from "../components/Header";
+import SiteHead from "../components/site-head";
+import Header from "../components/header";
+import SiteContent from "../components/site-content";
 
 const Home = () => {
     return (
-        <div>
+        <>
+            <SiteHead />
             <Header />
-            <p>I am Simon</p>
-        </div>
+            <SiteContent />
+        </>
     );
 };
 

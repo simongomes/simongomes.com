@@ -1,0 +1,30 @@
+// import font
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700&display=swap");
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Fira Mono", monospace;
+}
+p {
+    line-height: 1.5em;
+}
+.site-header {
+    background-color: #ffd201;
+    .header-wrap {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 15px 0;
+        .logo {
+            color: #252525;
+            font-size: 25px;
+            font-family: "Fira Mono", monospace;
+            font-weight: 900;
+            text-decoration: none;
+        }
+    }
+}
+.content-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
