@@ -10,7 +10,7 @@ export default () => {
           Chatleads.io
         </a>{' '}
         and{' '}
-        <a href="https://getbot.ninja" title="BotNinja">
+        <a href="https://getbot.ninja" title="BotNinja" target="_blank">
           BotNinja
         </a>
       </p>
