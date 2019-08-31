@@ -107,3 +107,12 @@ ul li {
     }
   }
 }
+
+// Responsive Styles
+@media all and (max-width: 767px) {
+  .site-header {
+    .header-wrap {
+      text-align: center;
+    }
+  }
+}
