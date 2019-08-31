@@ -4,6 +4,7 @@ import Location from '../components/contents/location';
 import Work from '../components/contents/work';
 import Skills from '../components/contents/skills';
 import Connect from '../components/contents/connect';
+import Chatbox from './chatbox';
 
 const SiteContent = () => {
   return (
@@ -14,6 +15,7 @@ const SiteContent = () => {
         <Work />
         <Skills />
         <Connect />
+        <Chatbox />
       </div>
     </div>
   );
