@@ -1,6 +1,33 @@
 import React, { Component } from 'react';
+import firebase from '../../src/js/firebase';
 
 export default class Chatbox extends Component {
+  constructor() {
+    super();
+    this.state = {
+      chats: []
+    };
+
+    // Bind methods
+    this.onMessageType = this.onMessageType.bind(this);
+  }
+
+  componentDidMount() {
+    const chatsRef = firebase.database().ref('messages');
+    chatsRef.on('value', snapshot => {
+      this.setState({
+        message: {
+          text: ''
+        },
+        chats: snapshot.val()
+      });
+    });
+  }
+
+  onMessageType(e) {
+    console.log(e.target.value);
+  }
+
   render() {
     return (
       <div className="chatbox" id="chatbox">
@@ -11,11 +38,30 @@ export default class Chatbox extends Component {
         </div>
         <div className="chatbox-body">
           <ul className="chat-list">
-            <li className="chat-item">
-              <span className="user-name">simon-gomes: </span>{' '}
-              <span className="message">Well, hi there!</span>
-            </li>
+            {this.state.chats.map((chat, index) => {
+              return (
+                <li className="chat-item" key={index}>
+                  <span
+                    className="user-name"
+                    style={{
+                      color: chat.color
+                    }}
+                  >
+                    {chat.name}:{' '}
+                  </span>{' '}
+                  <span className="message">{chat.message}</span>
+                </li>
+              );
+            })}
           </ul>
+        </div>
+        <div className="chatbox-input">
+          <input
+            type="text"
+            placeholder="Type your message here..."
+            onChange={this.onMessageType}
+            value={this.state.message.text}
+          />
         </div>
       </div>
     );

@@ -53,8 +53,9 @@ ul li {
 
 // Chatbox Styles
 .chatbox {
-  border-radius: 8px;
+  border-radius: 6px;
   max-width: 30rem;
+  overflow: hidden;
   .chatbox-topbar {
     background-color: rgb(224, 232, 240);
     height: 1.875rem;
@@ -98,12 +99,28 @@ ul li {
       .chat-item {
         list-style-type: none;
         color: #fefefe;
-        font-weight: 500;
+        font-weight: 600;
         font-size: 15px;
+        letter-spacing: 0.03rem;
         .message {
           font-weight: 100;
         }
       }
+    }
+  }
+  .chatbox-input {
+    background-color: rgb(13, 31, 45);
+    border-radius: 0 0 6px 6px;
+    padding: 0.5rem 1rem 0.55rem;
+    input {
+      width: 100%;
+      background-color: transparent;
+      border: 0 none;
+      color: #efefef;
+      font-weight: 500;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #525252;
+      outline: none;
     }
   }
 }
