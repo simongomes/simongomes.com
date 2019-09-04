@@ -5,6 +5,9 @@ export default class Chatbox extends Component {
   constructor() {
     super();
     this.state = {
+      message: {
+        text: ''
+      },
       chats: []
     };
 
@@ -16,16 +19,16 @@ export default class Chatbox extends Component {
     const chatsRef = firebase.database().ref('messages');
     chatsRef.on('value', snapshot => {
       this.setState({
-        message: {
-          text: ''
-        },
         chats: snapshot.val()
       });
     });
   }
 
   onMessageType(e) {
-    console.log(e.target.value);
+    e.persist();
+    this.setState(({ message }) => {
+      return { message: Object.assign(message, { text: e.target.value }) };
+    });
   }
 
   render() {
