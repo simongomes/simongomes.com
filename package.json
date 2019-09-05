@@ -13,7 +13,9 @@
     "firebase": "^6.5.0",
     "next": "9.0.5",
     "node-sass": "^4.12.0",
+    "randomcolor": "^0.5.4",
     "react": "16.9.0",
-    "react-dom": "16.9.0"
+    "react-dom": "16.9.0",
+    "unique-names-generator": "^3.0.0"
   }
 }
