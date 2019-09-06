@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
@@ -15,6 +15,7 @@
     "node-sass": "^4.12.0",
     "randomcolor": "^0.5.4",
     "react": "16.9.0",
+    "react-cookie": "^4.0.1",
     "react-dom": "16.9.0",
     "unique-names-generator": "^3.0.0"
   }

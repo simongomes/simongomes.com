@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import { uniqueNamesGenerator } from 'unique-names-generator';
 import randomColor from 'randomcolor';
 import firebase from '../../src/js/firebase';
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
 
-export default class Chatbox extends Component {
-  constructor() {
-    super();
+class Chatbox extends Component {
+  static propTypes = {
+    cookies: instanceOf(Cookies).isRequired
+  };
+
+  constructor(props) {
+    super(props);
     this.state = {
       message: {
         message: '',
         name: '',
         color: '',
-        time: Date.now()
+        time: null
       },
-      chats: []
+      chats: [],
+      database: firebase.database()
     };
 
     // Bind methods
@@ -21,19 +28,42 @@ export default class Chatbox extends Component {
     this.onMessageSubmit = this.onMessageSubmit.bind(this);
   }
 
-  componentDidMount() {
-    const chatsRef = firebase.database().ref('messages');
+  componentWillMount() {
+    const chatsRef = this.state.database.ref('messages');
     chatsRef.on('value', snapshot => {
       this.setState({
-        chats: snapshot.val()
+        chats: Object.keys(snapshot.val()).map(key => {
+          return snapshot.val()[key];
+        })
       });
     });
+  }
+
+  componentDidMount() {
+    // Set color and name from cookies
+    const { cookies } = this.props;
+
+    // Set chat name
+    cookies.get('chat_name') ||
+      cookies.set(
+        'chat_name',
+        uniqueNamesGenerator({ separator: '-', length: 2 }),
+        {
+          path: '/'
+        }
+      );
+
+    // Set chat color
+    cookies.get('chat_color') ||
+      cookies.set('chat_color', randomColor({ luminosity: 'bright' }), {
+        path: '/'
+      });
 
     // Set active message user name
     this.setState(({ message }) => {
       return {
         message: Object.assign(message, {
-          color: uniqueNamesGenerator({ separator: '-', length: 2 })
+          color: cookies.get('chat_color')
         })
       };
     });
@@ -42,7 +72,7 @@ export default class Chatbox extends Component {
     this.setState(({ message }) => {
       return {
         message: Object.assign(message, {
-          name: randomColor({ luminosity: 'bright' })
+          name: cookies.get('chat_name')
         })
       };
     });
@@ -59,7 +89,26 @@ export default class Chatbox extends Component {
   // Pushes the news chat message to firebase store
   onMessageSubmit(e) {
     if (e.charCode === 13) {
-      console.log(this.state.message);
+      // Set current time
+      this.setState(({ message }) => {
+        return {
+          message: Object.assign(message, {
+            time: Date.now()
+          })
+        };
+      });
+      const chatsRef = this.state.database.ref('messages');
+      if (
+        this.state.message.message !== '' ||
+        this.state.message.message.trim() !== ''
+      ) {
+        setTimeout(() => {
+          chatsRef.push(this.state.message);
+          this.setState(({ message }) => {
+            return { message: Object.assign(message, { message: '' }) };
+          });
+        }, 1500);
+      }
     }
   }
 
@@ -96,10 +145,12 @@ export default class Chatbox extends Component {
             placeholder="Type your message here..."
             onChange={this.onMessageType}
             onKeyPress={this.onMessageSubmit}
-            value={this.state.message.text}
+            value={this.state.message.message}
           />
         </div>
       </div>
     );
   }
 }
+
+export default withCookies(Chatbox);

@@ -56,6 +56,9 @@ ul li {
   border-radius: 6px;
   max-width: 30rem;
   overflow: hidden;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
   .chatbox-topbar {
     background-color: rgb(224, 232, 240);
     height: 1.875rem;
