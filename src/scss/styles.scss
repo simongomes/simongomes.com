@@ -97,11 +97,10 @@ ul li {
     flex-direction: column;
     width: 100%;
     background-color: rgb(13, 31, 45);
-    padding: 0.5rem 1rem 0.25rem;
     box-sizing: border-box;
     .chat-list {
       margin: 0;
-      padding: 0;
+      padding: 0.5rem 1rem 0.25rem;
       .chat-item {
         list-style-type: none;
         color: #fefefe;

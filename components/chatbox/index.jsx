@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { uniqueNamesGenerator } from 'unique-names-generator';
 import randomColor from 'randomcolor';
 import firebase from '../../src/js/firebase';
+import Scrollbar from 'react-scrollbars-custom';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 
@@ -120,7 +121,10 @@ class Chatbox extends Component {
           <button className="chatbox-topbar-button button-yellow" />
           <button className="chatbox-topbar-button button-green" />
         </div>
-        <div className="chatbox-body">
+        <Scrollbar
+          className="chatbox-body"
+          style={{ width: '31.1rem', height: '50vh' }}
+        >
           <ul className="chat-list">
             {this.state.chats.map((chat, index) => {
               return (
@@ -138,7 +142,7 @@ class Chatbox extends Component {
               );
             })}
           </ul>
-        </div>
+        </Scrollbar>
         <div className="chatbox-input">
           <input
             type="text"
