@@ -1,0 +1,140 @@
+// import font
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700&display=swap');
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Fira Mono', monospace;
+  color: #454545;
+}
+a {
+  color: #454545;
+}
+p,
+h5 {
+  line-height: 1.5em;
+  font-size: 100%;
+}
+h5 {
+  margin: 1rem auto;
+}
+ul li {
+  margin-bottom: 0.432rem;
+  list-style-type: lower-greek;
+}
+.thin-text {
+  font-weight: 400;
+}
+.hash-tag {
+  color: rgb(192, 192, 192);
+  font-weight: 400;
+}
+.site-header {
+  background-color: #ffd201;
+  .header-wrap {
+    max-width: 35rem;
+    margin: 0px auto;
+    padding: 1.25rem 1.0875rem;
+    .logo {
+      color: #252525;
+      font-size: 18px;
+      font-family: 'Fira Mono', monospace;
+      font-weight: 900;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}
+.content-wrapper {
+  max-width: 35rem;
+  margin: 0px auto;
+  padding: 0px 0.9375rem 1.875rem;
+}
+
+// Chatbox Styles
+.chatbox {
+  border-radius: 6px;
+  max-width: 30rem;
+  overflow: hidden;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  .chatbox-topbar {
+    background-color: rgb(224, 232, 240);
+    height: 1.875rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    padding: 0px 0.625rem;
+    .chatbox-topbar-button {
+      display: inline-block;
+      width: 0.75rem;
+      height: 0.75rem;
+      margin-top: 0.625rem;
+      margin-right: 0.35rem;
+      padding: 0px;
+      border-radius: 0.5rem;
+      border-width: 1px;
+      border-style: solid;
+      border-color: transparent;
+      border-image: initial;
+      &.button-red {
+        background-color: rgb(255, 96, 87);
+      }
+      &.button-yellow {
+        background-color: rgb(255, 189, 46);
+      }
+      &.button-green {
+        background-color: rgb(39, 201, 63);
+      }
+    }
+  }
+  .chatbox-body {
+    position: relative;
+    max-height: 50vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(13, 31, 45);
+    box-sizing: border-box;
+    .chat-list {
+      margin: 0;
+      padding: 0.5rem 2rem 0.25rem 1rem;
+      .chat-item {
+        list-style-type: none;
+        color: #fefefe;
+        font-weight: 600;
+        font-size: 15px;
+        letter-spacing: 0.03rem;
+        .message {
+          font-weight: 100;
+        }
+      }
+    }
+  }
+  .chatbox-input {
+    background-color: rgb(13, 31, 45);
+    border-radius: 0 0 6px 6px;
+    padding: 0.5rem 1rem 0.55rem;
+    input {
+      width: 100%;
+      background-color: transparent;
+      border: 0 none;
+      color: #efefef;
+      font-weight: 500;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #525252;
+      outline: none;
+    }
+  }
+}
+
+// Responsive Styles
+@media all and (max-width: 767px) {
+  .site-header {
+    .header-wrap {
+      text-align: center;
+    }
+  }
+}
