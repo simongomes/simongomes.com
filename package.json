@@ -1,10 +1,11 @@
 {
-  "name": "simongomes.dev",
+  "name": "simongomesdev",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
@@ -16,7 +17,7 @@
     "next-ga": "^2.3.4",
     "node-sass": "^4.14.1",
     "randomcolor": "^0.5.4",
-    "react": "16.9.0",
+    "react": "16.14.0",
     "react-cookie": "^4.0.1",
     "react-dom": "16.9.0",
     "react-scrollbars-custom": "^4.0.20",
