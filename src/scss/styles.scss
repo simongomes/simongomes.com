@@ -1,10 +1,10 @@
 // import font
-@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Fira+Mono:400,500,700&display=swap");
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Fira Mono', monospace;
+  font-family: "Fira Mono", monospace;
   color: #454545;
 }
 a {
@@ -38,7 +38,7 @@ ul li {
     .logo {
       color: #252525;
       font-size: 18px;
-      font-family: 'Fira Mono', monospace;
+      font-family: "Fira Mono", monospace;
       font-weight: 900;
       text-decoration: none;
       text-transform: uppercase;
@@ -91,6 +91,7 @@ ul li {
   .chatbox-body {
     position: relative;
     max-height: 50vh;
+    // max-width: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
     display: flex;
@@ -136,5 +137,15 @@ ul li {
     .header-wrap {
       text-align: center;
     }
+  }
+  .chatbox {
+    position: relative;
+    max-width: 100%;
+    left: 0;
+    top: 0;
+    margin-top: 50px;
+  }
+  .chatbox-body {
+    max-width: 100%;
   }
 }
