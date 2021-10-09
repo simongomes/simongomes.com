@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import Head from 'next/head';
-import { initGA, logPageView } from '../src/js/googleAnalytics';
+import React, { Component } from "react";
+import Head from "next/head";
+import { initGA, logPageView } from "../src/js/googleAnalytics";
 
 class SiteHead extends Component {
   componentDidMount() {

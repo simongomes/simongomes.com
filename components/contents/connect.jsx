@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-export default () => {
+const connect = () => {
   return (
     <section className="connect" id="connect">
       <h5>
@@ -36,3 +36,4 @@ export default () => {
     </section>
   );
 };
+export default connect;

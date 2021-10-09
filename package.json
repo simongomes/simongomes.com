@@ -21,6 +21,7 @@
     "react-cookie": "^4.0.1",
     "react-dom": "16.9.0",
     "react-scrollbars-custom": "^4.0.20",
+    "react-tooltip": "^4.2.21",
     "unique-names-generator": "^3.0.0",
     "webpack": "^4.39.3"
   }

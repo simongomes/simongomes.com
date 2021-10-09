@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import { uniqueNamesGenerator } from 'unique-names-generator';
-import randomColor from 'randomcolor';
-import firebase from '../../src/js/firebase';
-import Scrollbar from 'react-scrollbars-custom';
-import { instanceOf } from 'prop-types';
-import { withCookies, Cookies } from 'react-cookie';
+import React, { Component } from "react";
+import { uniqueNamesGenerator } from "unique-names-generator";
+import randomColor from "randomcolor";
+import firebase from "../../src/js/firebase";
+import Scrollbar from "react-scrollbars-custom";
+import { instanceOf } from "prop-types";
+import { withCookies, Cookies } from "react-cookie";
 
 class Chatbox extends Component {
   static propTypes = {
-    cookies: instanceOf(Cookies).isRequired
+    cookies: instanceOf(Cookies).isRequired,
   };
 
   constructor(props) {
     super(props);
     this.state = {
       message: {
-        message: '',
-        name: '',
-        color: '',
-        time: null
+        message: "",
+        name: "",
+        color: "",
+        time: null,
       },
       chats: [],
       submitDisabled: false,
-      database: firebase.database()
+      database: firebase.database(),
     };
 
     // Bind methods
@@ -31,12 +31,12 @@ class Chatbox extends Component {
   }
 
   componentWillMount() {
-    const chatsRef = this.state.database.ref('messages');
-    chatsRef.on('value', snapshot => {
+    const chatsRef = this.state.database.ref("messages");
+    chatsRef.on("value", (snapshot) => {
       this.setState({
-        chats: Object.keys(snapshot.val()).map(key => {
+        chats: Object.keys(snapshot.val()).map((key) => {
           return snapshot.val()[key];
-        })
+        }),
       });
     });
   }
@@ -46,27 +46,27 @@ class Chatbox extends Component {
     const { cookies } = this.props;
 
     // Set chat name
-    cookies.get('chat_name') ||
+    cookies.get("chat_name") ||
       cookies.set(
-        'chat_name',
-        uniqueNamesGenerator({ separator: '-', length: 2 }),
+        "chat_name",
+        uniqueNamesGenerator({ separator: "-", length: 2 }),
         {
-          path: '/'
+          path: "/",
         }
       );
 
     // Set chat color
-    cookies.get('chat_color') ||
-      cookies.set('chat_color', randomColor({ luminosity: 'bright' }), {
-        path: '/'
+    cookies.get("chat_color") ||
+      cookies.set("chat_color", randomColor({ luminosity: "bright" }), {
+        path: "/",
       });
 
     // Set active message user name
     this.setState(({ message }) => {
       return {
         message: Object.assign(message, {
-          color: cookies.get('chat_color')
-        })
+          color: cookies.get("chat_color"),
+        }),
       };
     });
 
@@ -74,8 +74,8 @@ class Chatbox extends Component {
     this.setState(({ message }) => {
       return {
         message: Object.assign(message, {
-          name: cookies.get('chat_name')
-        })
+          name: cookies.get("chat_name"),
+        }),
       };
     });
 
@@ -93,7 +93,7 @@ class Chatbox extends Component {
     e.persist();
     this.setState(({ message }) => {
       return {
-        message: Object.assign(message, { message: e.target.value })
+        message: Object.assign(message, { message: e.target.value }),
       };
     });
   }
@@ -107,20 +107,20 @@ class Chatbox extends Component {
         this.setState(({ message }) => {
           return {
             message: Object.assign(message, {
-              time: Date.now()
-            })
+              time: Date.now(),
+            }),
           };
         });
-        const chatsRef = this.state.database.ref('messages');
+        const chatsRef = this.state.database.ref("messages");
         if (
-          this.state.message.message !== '' ||
-          this.state.message.message.trim() !== ''
+          this.state.message.message !== "" ||
+          this.state.message.message.trim() !== ""
         ) {
           setTimeout(() => {
             chatsRef.push(this.state.message);
             this.setState(({ message }) => {
               return {
-                message: Object.assign(message, { message: '' })
+                message: Object.assign(message, { message: "" }),
               };
             });
             this.submitDisabled = false;
@@ -134,7 +134,7 @@ class Chatbox extends Component {
 
   // Scroll Bottom
   scrollToBottom = () => {
-    this.messagesEnd.scrollIntoView({ behavior: 'smooth' });
+    this.messagesEnd.scrollIntoView({ behavior: "smooth" });
   };
 
   render() {
@@ -147,7 +147,7 @@ class Chatbox extends Component {
         </div>
         <Scrollbar
           className="chatbox-body"
-          style={{ width: '31.1rem', height: '50vh' }}
+          style={{ width: "31.1rem", height: "50vh" }}
         >
           <ul className="chat-list">
             {this.state.chats.map((chat, index) => {
@@ -156,18 +156,18 @@ class Chatbox extends Component {
                   <span
                     className="user-name"
                     style={{
-                      color: chat.color
+                      color: chat.color,
                     }}
                   >
-                    {chat.name}:{' '}
-                  </span>{' '}
+                    {chat.name}:{" "}
+                  </span>{" "}
                   <span className="message">{chat.message}</span>
                 </li>
               );
             })}
             <li
-              style={{ float: 'left', clear: 'both' }}
-              ref={el => {
+              style={{ float: "left", clear: "both" }}
+              ref={(el) => {
                 this.messagesEnd = el;
               }}
             ></li>
