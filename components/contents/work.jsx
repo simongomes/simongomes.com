@@ -8,7 +8,8 @@ const work = () => {
         Working as Lead Frontend Engineer at{" "}
         <a href="https://umma.id" title="Umma Indonesia" target="_blank">
           Umma Indonesia
-        </a>{" "}
+        </a>
+        .
       </p>
     </section>
   );
