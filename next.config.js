@@ -1,4 +1,7 @@
-const withSass = require('@zeit/next-sass');
-module.exports = withSass({
-  webpack5: false,
-});
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: false,
+  swcMinify: true,
+};
+
+module.exports = nextConfig;

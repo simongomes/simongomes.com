@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { uniqueNamesGenerator } from "unique-names-generator";
+import {
+  uniqueNamesGenerator,
+  adjectives,
+  animals,
+} from "unique-names-generator";
 import randomColor from "randomcolor";
-import firebase from "../../src/js/firebase";
+import firebase from "../../js/firebase";
 import Scrollbar from "react-scrollbars-custom";
 import { instanceOf } from "prop-types";
 import { withCookies, Cookies } from "react-cookie";
@@ -30,7 +34,18 @@ class Chatbox extends Component {
     this.onMessageSubmit = this.onMessageSubmit.bind(this);
   }
 
-  componentWillMount() {
+  // componentWillMount() {
+  //   const chatsRef = this.state.database.ref("messages");
+  //   chatsRef.on("value", (snapshot) => {
+  //     this.setState({
+  //       chats: Object.keys(snapshot.val()).map((key) => {
+  //         return snapshot.val()[key];
+  //       }),
+  //     });
+  //   });
+  // }
+
+  componentDidMount() {
     const chatsRef = this.state.database.ref("messages");
     chatsRef.on("value", (snapshot) => {
       this.setState({
@@ -39,9 +54,7 @@ class Chatbox extends Component {
         }),
       });
     });
-  }
 
-  componentDidMount() {
     // Set color and name from cookies
     const { cookies } = this.props;
 
@@ -49,7 +62,11 @@ class Chatbox extends Component {
     cookies.get("chat_name") ||
       cookies.set(
         "chat_name",
-        uniqueNamesGenerator({ separator: "-", length: 2 }),
+        uniqueNamesGenerator({
+          dictionaries: [adjectives, animals],
+          separator: "-",
+          length: 2,
+        }),
         {
           path: "/",
         }

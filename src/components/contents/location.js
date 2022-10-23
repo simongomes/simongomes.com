@@ -1,6 +1,6 @@
 import React from "react";
 
-const location = () => {
+const Location = () => {
   return (
     <section className="location" id="location">
       <h5>
@@ -10,4 +10,4 @@ const location = () => {
     </section>
   );
 };
-export default location;
+export default Location;
