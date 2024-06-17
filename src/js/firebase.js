@@ -2,7 +2,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 import "firebase/compat/storage";
 
-const config = {
+export const config = {
   apiKey: "AIzaSyCkOEbFQ_8ua-v96SOWos1TGxUS-3QC7v0",
   authDomain: "simongomes-live-chat.firebaseapp.com",
   databaseURL: "https://simongomes-live-chat.firebaseio.com",
