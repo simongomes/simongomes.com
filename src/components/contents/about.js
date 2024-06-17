@@ -10,10 +10,10 @@ const About = () => {
   return (
     <section className="about" id="about">
       <p>
-        Experienced Frontend Engineer, over 7+ years of experiance on the field.
+        Experienced Senior Frontend Engineer, over 8+ years of experience on the field.
         Specialized in{" "}
         <strong
-          title="(Vanilla, Vue, React, ES6, jQuery)"
+          title="(React, Next, Vue, Nuxt, Express, Nest, Strapi, Ghost, ES6)"
           data-tip
           data-for="JavaScript"
         >
@@ -21,7 +21,7 @@ const About = () => {
         </strong>
         {loadTooltip && (
           <ReactTooltip id="JavaScript" type="warning" effect="solid">
-            <span>(React, Vue, Next, Nuxt, ES6, jQuery)</span>
+            <span>(React, Next, Vue, Nuxt, Nest, Strapi, Ghost, ES6)</span>
           </ReactTooltip>
         )}
         ,{" "}

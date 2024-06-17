@@ -5,7 +5,7 @@ const Location = () => {
     <section className="location" id="location">
       <h5>
         <span className="hash-tag">#</span> Location:{" "}
-        <span className="thin-text">Dhaka, Bangladesh</span>
+        <span className="thin-text">Manila, Philippines</span>
       </h5>
     </section>
   );
